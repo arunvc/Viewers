@@ -39,7 +39,8 @@
     "test:e2e:serve": "cross-env APP_CONFIG=config/e2e.js yarn start",
     "test:unit": "jest --watchAll",
     "test:unit:ci": "jest --ci --runInBand --collectCoverage",
-    "ci:generateSuccessVersion": "node -p -e \"require('./package.json').version\" > success_version.txt"
+    "ci:generateSuccessVersion": "node -p -e \"require('./package.json').version\" > success_version.txt",
+    "build-india": "cross-env NODE_ENV=production PUBLIC_URL=/ APP_CONFIG=config/eclarity-india.js QUICK_BUILD=false yarn run build"
   },
   "files": [
     "dist",

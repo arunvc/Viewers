@@ -52,7 +52,8 @@
     "lerna:restore": "./netlify-lerna-restore.sh",
     "lerna:version": "npx lerna version prerelease --force-publish",
     "lerna:publish": "lerna publish from-package --dist-tag next",
-    "link-list": "npm ls --depth=0 --link=true"
+    "link-list": "npm ls --depth=0 --link=true",
+    "build-india": "lerna run build-india --stream"
   },
   "dependencies": {
     "@babel/runtime": "7.16.3",
