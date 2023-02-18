@@ -1,7 +1,7 @@
 window.config = {
   routerBasename: '/',
   customizationService: [
-    '@ohif/extension-default.customizationModule.helloPage',
+    '@ohif/extension-default.customizationModule.datasources',
     {
       id: 'class:StudyBrowser',
       true: 'black',
@@ -14,6 +14,8 @@ window.config = {
   maxNumberOfWebWorkers: 4,
   // below flag is for performance reasons, but it might not work for all servers
   omitQuotationForMultipartRequest: true,
+  showWarningMessageForCrossOrigin: true,
+  showCPUFallbackMessage: true,
   showLoadingIndicator: true,
   // filterQueryParam: false,
   dataSources: [
@@ -43,8 +45,8 @@ window.config = {
       sourceName: 'aws',
       configuration: {
         name: 'aws',
-        qidoRoot: 'https://viewer.flexview.ai/dicomweb',
-        wadoRoot: 'https://viewer.flexview.ai/dicomweb',
+        qidoRoot: 'https://dd32w2rfebxel.cloudfront.net/dicomweb',
+        wadoRoot: 'https://dd32w2rfebxel.cloudfront.net/dicomweb',
         qidoSupportsIncludeField: false,
         supportsReject: false,
         supportsStow: false,
