@@ -10,6 +10,7 @@ import { Enums as cs3DToolsEnums } from '@cornerstonejs/tools';
 import { ServicesManager, Types } from '@ohif/core';
 
 import init from './init';
+import getCustomizationModule from './getCustomizationModule';
 import getCommandsModule from './commandsModule';
 import getHangingProtocolModule from './getHangingProtocolModule';
 import ToolGroupService from './services/ToolGroupService';
@@ -22,12 +23,13 @@ import * as CornerstoneExtensionTypes from './types';
 import { toolNames } from './initCornerstoneTools';
 import { getEnabledElement, reset as enabledElementReset } from './state';
 import dicomLoaderService from './utils/dicomLoaderService';
+import getActiveViewportEnabledElement from './utils/getActiveViewportEnabledElement';
 import { registerColormap } from './utils/colormap/transferFunctionHelpers';
 
 import { id } from './id';
 import * as csWADOImageLoader from './initWADOImageLoader.js';
 import { measurementMappingUtils } from './utils/measurementServiceMappings';
-import { PublicViewportOptions } from './services/ViewportService/Viewport';
+import type { PublicViewportOptions } from './services/ViewportService/Viewport';
 
 const Component = React.lazy(() => {
   return import(
@@ -93,7 +95,7 @@ const cornerstoneExtension: Types.Extensions.Extension = {
       return (
         <OHIFCornerstoneViewport
           {...props}
-          ToolbarService={toolbarService}
+          toolbarService={toolbarService}
           servicesManager={servicesManager}
           commandsManager={commandsManager}
         />
@@ -108,6 +110,7 @@ const cornerstoneExtension: Types.Extensions.Extension = {
     ];
   },
   getCommandsModule,
+  getCustomizationModule,
   getUtilityModule({ servicesManager }) {
     return [
       {
@@ -118,7 +121,6 @@ const cornerstoneExtension: Types.Extensions.Extension = {
           },
           getEnabledElement,
           dicomLoaderService,
-          registerColormap,
         },
       },
       {
@@ -139,5 +141,5 @@ const cornerstoneExtension: Types.Extensions.Extension = {
 };
 
 export type { PublicViewportOptions };
-export { measurementMappingUtils, CornerstoneExtensionTypes };
+export { measurementMappingUtils, CornerstoneExtensionTypes, toolNames , getActiveViewportEnabledElement};
 export default cornerstoneExtension;
